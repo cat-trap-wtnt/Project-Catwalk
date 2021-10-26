@@ -7,7 +7,11 @@ class RelatedProducts extends React.Component {
 
   render() {
     return (
-      <div>Related Products here :D</div>
+      <div>
+        <p>Related Products here :D</p>
+        <p>WOW ZOMG IT WORKS</p>
+        <p>BUY DIS HERE only $200$ for oatmeal</p>
+      </div>
     )
   }
 }
