@@ -18,8 +18,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getProducts()
-
-
   }
 
   getProducts() {
