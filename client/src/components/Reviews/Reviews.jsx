@@ -7,7 +7,11 @@ class Reviews extends React.Component {
 
   render() {
     return (
-      <div>Review Section</div>
+      <div>
+        <div>Review Section</div>
+        <div>merging test</div>
+        <div>Let's go team CatTraaaaaaaap!</div>
+      </div>
     )
   }
 }
