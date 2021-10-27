@@ -1,6 +1,6 @@
 ## NPM ##
 node_modules
 ## API keys ##
+
 config.js
 
-client/dist/bundle.js
