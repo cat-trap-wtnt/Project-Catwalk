@@ -33,7 +33,8 @@ class ProductDetails extends React.Component{
   render() {
     if(!this.state.productsData) {return null;}
     return (
-      <div>Product Detail
+      <div>
+        Product Details
         <ul>
       {this.state.productsData.map((item, index) => {
         return <Product item={item} key={index}/>;
