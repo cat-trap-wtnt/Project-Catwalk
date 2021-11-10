@@ -1,8 +1,5 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 import ReviewTile from './ReviewTile';
 import MoreReviewBtn from './MoreReviewBtn';
 import AddReview from './AddReview';
@@ -17,15 +14,13 @@ class Reviews extends React.Component {
       // eslint-disable-next-line react/prop-types
       currentID: props.productId,
       moreReview: false,
-      moreReviewtext: 'MORE REVIEWS',
+      moreReviewtext: 'More Reviews',
       meta: {},
       charItem: {},
-      modalShow: false,
     };
     this.getReviews = this.getReviews.bind(this);
     this.getReviewMeta = this.getReviewMeta.bind(this);
     this.handleMoreReviewsClick = this.handleMoreReviewsClick.bind(this);
-    this.handleAddReviewClick = this.handleAddReviewClick.bind(this);
   }
 
   componentDidMount() {
@@ -33,43 +28,24 @@ class Reviews extends React.Component {
     this.getReviewMeta();
   }
 
-  componentDidUpdate() {
-    const { currentID } = this.state;
-    const { productId } = this.props;
-    if (currentID !== productId) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        currentID: productId,
-      });
-      this.getReviews();
-      this.getReviewMeta();
-    }
-  }
-
   handleMoreReviewsClick() { // get request
     const { moreReview } = this.state;
     if (moreReview === false) {
       this.setState({
         moreReview: true,
-        moreReviewtext: 'LESS REVIEWS',
+        moreReviewtext: 'Show Less Reviews',
       });
     } else {
       this.setState({
         moreReview: false,
-        moreReviewtext: 'MORE REVIEWS',
+        moreReviewtext: 'Show More Reviews',
       });
     }
   }
 
-  handleAddReviewClick(e) {
-    this.setState({
-      modalShow: e,
-    });
-  }
-
   getReviews() {
-    const { productId } = this.props;
-    axios.get(`/reviews/${productId}`)
+    const { currentID } = this.state;
+    axios.get(`/reviews/${currentID}`)
       .then((res) => {
         this.setState({
           reviews: res.data.results,
@@ -80,8 +56,8 @@ class Reviews extends React.Component {
   }
 
   getReviewMeta() {
-    const { productId } = this.props;
-    axios.get(`/reviews/meta/${productId}`)
+    const { currentID } = this.state;
+    axios.get(`/reviews/meta/${currentID}`)
       .then((res) => {
         this.setState({
           meta: res.data,
@@ -93,7 +69,7 @@ class Reviews extends React.Component {
 
   render() {
     const {
-      reviews, lessReviews, currentID, moreReviewtext, moreReview, meta, charItem, modalShow,
+      reviews, lessReviews, currentID, moreReviewtext, moreReview, meta, charItem,
     } = this.state;
     // default: render 2 review, if more review button is clicked, show all reviews.
     let renderReviews;
@@ -102,15 +78,6 @@ class Reviews extends React.Component {
       renderReviews = reviews;
     } else {
       renderReviews = lessReviews;
-    }
-
-    if (reviews.length === 0) {
-      return (
-        <div>
-          <div> No review available. </div>
-          <AddReview currentID={currentID} getReviews={this.getReviews} charItem={charItem} />
-        </div>
-      );
     }
 
     return (
@@ -127,15 +94,7 @@ class Reviews extends React.Component {
           moreReviewtext={moreReviewtext}
         />
         {'\n'}
-        <Button variant="primary" onClick={() => this.handleAddReviewClick(true)}>
-          ADD A REVIEW +
-        </Button>
-        <AddReview
-          show={modalShow}
-          onHide={() => this.handleAddReviewClick(false)}
-          currentID={currentID}
-          getReviews={this.getReviews}
-          charItem={charItem} />
+        <AddReview currentID={currentID} getReviews={this.getReviews} charItem={charItem} />
       </div>
     );
   }

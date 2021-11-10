@@ -9,8 +9,8 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form className="qSearchArea">
-        <input className="qSearchBar" type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
+      <form>
+        <input type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
       </form>
     );
   }
