@@ -4,7 +4,7 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 import React, {
-  useState, useRef, useEffect,
+  useState, useRef, useEffect, useLayoutEffect,
 } from 'react';
 import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti';
@@ -30,10 +30,13 @@ const PhotoGallery = ({ currentStyle }) => {
   };
   useEffect(() => {
     setSelectThumb(current);
+  }, [current]);
+
+  useLayoutEffect(() => {
     if (ref.current.clientHeight < ref.current.scrollHeight) {
       setShowArrow(true);
     }
-  }, [current, ref, currentStyle]);
+  }, [ref, currentStyle]);
 
   const scroll = (scrollOffset) => {
     ref.current.scrollTop += scrollOffset;

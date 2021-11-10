@@ -27,17 +27,17 @@ class ProductStyle extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidUpdate() {
-    if (this.props.style.results[0].style_id !== this.state.style_id) {
-      this.setState({
-        product: this.props.product,
-        styles: this.props.style.results,
-        currentStyle: this.props.style.results[0],
-        style_id: this.props.style.results[0].style_id,
-        currentReviews: this.props.currentReviews,
-      });
-    }
-  }
+  // componentDidUpdate() {
+  //   if (this.props.style.results[0].style_id !== this.state.style_id) {
+  //     this.setState({
+  //       product: this.props.product,
+  //       styles: this.props.style.results,
+  //       currentStyle: this.props.style.results[0],
+  //       style_id: this.props.style.results[0].style_id,
+  //       currentReviews: this.props.currentReviews,
+  //     });
+  //   }
+  // }
 
   handleChange(e) {
     this.setState({

@@ -6,7 +6,6 @@
 #app {
   width: 80%;
   margin: auto;
-  object-fit: scale-down;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
@@ -18,10 +17,11 @@
 /*Product Detail Overall Grid*/
 
 .productDetails {
-  height: 90vh;
+  height: 60rem;
   display: grid;
   grid-template-rows: 70% 30%;
   grid-template-columns: 60% 40%;
+  margin-bottom: 3rem;
 }
 
 /*Photo Gallery Style*/
@@ -30,14 +30,14 @@
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 3%;
   margin-right: 3%;
   z-index: 11;
-  align-content: center;
+  align-content: space-around;
   flex-wrap: nowrap;
   overflow: hidden;
+  justify-content: center;
 }
 
 .photo{
@@ -367,13 +367,7 @@
 
 .sloganText {
   margin: 0.15em 0.15em 0.15em 0em;
-  font-family: 'Asul', sans-serif;
   font-size: 2em
-}
-
-.descriptionText {
-  font-family: 'Spartan', sans-serif;
-  font-weight: bold;
 }
 
 .productDescription {
@@ -392,5 +386,4 @@
   margin-left:3%;
   padding-left:5%;
   font-family: 'Spartan', sans-serif;
-  font-weight: bold;
 }
